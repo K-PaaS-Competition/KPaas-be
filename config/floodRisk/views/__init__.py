@@ -1,2 +1,2 @@
-from .loadFloodRisk import loadFloodRisk
-from .getFloodRisk import getFloodRisk
+from .loadFloodRisk import *
+from .floodRisk import *

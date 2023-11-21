@@ -1,2 +1,7 @@
 django
+djangorestframework
 pandas
+django-dotenv
+mysqlclient
+django-cors-headers
+requests

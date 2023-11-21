@@ -44,9 +44,11 @@ INSTALLED_APPS = [
     "corsheaders",
     "floodRisk",
     "subway",
+    "city",
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -54,7 +56,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "corsheaders.middleware.CorsMiddleware",
 ]
 CORS_ORIGIN_WHITELIST = ["http://127.0.0.1:3000", "http://localhost:3000"]
 CORS_ALLOW_CREDENTIALS = True
@@ -133,6 +134,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticFiles")
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [
     BASE_DIR / "floodRisk" / "static",
+    BASE_DIR / "subway" / "static",
 ]
 
 # Default primary key field type

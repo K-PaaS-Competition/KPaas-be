@@ -1,7 +1,9 @@
 from django.db import models
+from city.models import City
 
 
 class FloodRisk(models.Model):
+    city = models.ForeignKey(City, null=False, on_delete=models.CASCADE, default=1)
     location = models.CharField(max_length=100)
     gidChar = models.CharField(max_length=100)
     gidCode1 = models.IntegerField()
