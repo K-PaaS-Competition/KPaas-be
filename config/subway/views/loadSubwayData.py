@@ -34,7 +34,7 @@ class LoadSubwayData(APIView):
         try:
             apiKey = os.environ.get("SUBWAY_APIKEY")
             data = requests.get(
-                f"http://t-data.seoul.go.kr/apig/apiman-gateway/tapi/TaimsKsccDvSubwayStationGeom/1.0?apikey={apiKey}&startRow=1&rowCnt=1500"
+                f"http://t-data.seoul.go.kr/apig/apiman-gateway/tapi/TaimsKsccDvSubwayStationGeom/1.0?apikey={apiKey}&startRow=1&rowCnt=1500",
             )
             data = ast.literal_eval(data.text)
         except:

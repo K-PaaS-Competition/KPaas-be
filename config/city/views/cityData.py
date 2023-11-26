@@ -16,7 +16,7 @@ class CityData(APIView):
 
     # 특정 도시 데이터 반환
     def get(self, request):
-        name = request.GET["name"]
+        name = request.GET["city"]
         # serializer 적용하려면 values로 가져와라
         data = None
         try:

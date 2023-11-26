@@ -42,9 +42,12 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "corsheaders",
+    "django_apscheduler",
+    "django_crontab",
     "floodRisk",
     "subway",
     "city",
+    "rain",
 ]
 
 MIDDLEWARE = [
@@ -120,7 +123,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Asia/Seoul"
 
 USE_I18N = True
 
@@ -135,9 +138,18 @@ STATIC_URL = "/static/"
 STATICFILES_DIRS = [
     BASE_DIR / "floodRisk" / "static",
     BASE_DIR / "subway" / "static",
+    BASE_DIR / "city" / "static",
 ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+CRONJOBS = [
+    ("*/1 * * * *", "config.cron.test", ">> logs.log"),
+]
+
+APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"  # Default
+
+SCHEDULER_DEFAULT = True

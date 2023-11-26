@@ -22,7 +22,8 @@ routers = routers.DefaultRouter()
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("data/", include("floodRisk.urls")),
+    path("floodRisk/", include("floodRisk.urls")),
     path("subway/", include("subway.urls")),
     path("city/", include("city.urls")),
+    path("rain/", include("rain.urls")),
 ]
