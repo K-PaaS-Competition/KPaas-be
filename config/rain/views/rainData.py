@@ -19,6 +19,7 @@ class RainData(APIView):
         elif dataSize > 1000:
             dataSize = 966
             CumulativeTime = 21
+            print(dataSize)
         apiKey = os.environ.get("RAIN_APIKEY")
         result = []
         try:
@@ -28,7 +29,8 @@ class RainData(APIView):
             result = result.text
             result = ast.literal_eval(result)
             result = result["ListRainfallService"]["row"]
-        except:
+            # print(result)
+        except KeyError:
             return Response(status.HTTP_400_BAD_REQUEST)
         # 구청 이름 집합 만들기
         guNameSet = set()
@@ -40,16 +42,30 @@ class RainData(APIView):
         # 구청별로 강수량 데이터 정리
         for guName in guNameSet:
             try:
+                # 진짜 데이터
                 dataSet = [
                     float(item["RAINFALL10"])
                     for item in result
                     if item["GU_NAME"] == guName
                 ]
-                length = len(dataSet) // (CumulativeTime // 10)
-                rainFall = sum(dataSet) / length
+
+                # 테스트용
+                # dataSet = [
+                #     random.randint(1, 10)
+                #     for item in result
+                #     if item["GU_NAME"] == guName
+                # ]
+                # print(dataSet)
+
+                rainFall = sum(dataSet) / len(dataSet)
                 rainFallDict[guName] = {"rainFall": rainFall}
             except ZeroDivisionError:
-                return Response(status.HTTP_400_BAD_REQUEST)
-            except:
+                return Response(
+                    {
+                        "status": status.HTTP_400_BAD_REQUEST,
+                        "message": "ZeroDivisionError",
+                    }
+                )
+            except KeyError:
                 return Response(status.HTTP_400_BAD_REQUEST)
         return Response(rainFallDict)
