@@ -43,21 +43,21 @@ class RainData(APIView):
         for guName in guNameSet:
             try:
                 # 진짜 데이터
+                # dataSet = [
+                #     float(item["RAINFALL10"])
+                #     for item in result
+                #     if item["GU_NAME"] == guName
+                # ]
+
+                # 테스트용
                 dataSet = [
-                    float(item["RAINFALL10"])
+                    random.randint(1, 20)
                     for item in result
                     if item["GU_NAME"] == guName
                 ]
 
-                # 테스트용
-                # dataSet = [
-                #     random.randint(1, 10)
-                #     for item in result
-                #     if item["GU_NAME"] == guName
-                # ]
-                # print(dataSet)
-
-                rainFall = sum(dataSet) / len(dataSet)
+                rainFall = round(sum(dataSet) / len(dataSet))
+                print(rainFall)
                 rainFallDict[guName] = {"rainFall": rainFall}
             except ZeroDivisionError:
                 return Response(
