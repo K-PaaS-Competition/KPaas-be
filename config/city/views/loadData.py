@@ -17,7 +17,8 @@ class LoadData(APIView):
         print(table)
         table = table.reset_index()
         print(table)
-        city = City.objects.filter(name="seoul").first()
+        cityName = table.loc[0]["시도"]
+        city = City.objects.filter(name=cityName).first()
         added = 0
         for i in range(len(table)):
             data = table.loc[i]
