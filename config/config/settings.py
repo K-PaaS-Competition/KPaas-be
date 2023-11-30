@@ -42,8 +42,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "corsheaders",
-    "django_apscheduler",
-    "django_crontab",
     "floodRisk",
     "subway",
     "city",
