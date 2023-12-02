@@ -58,7 +58,6 @@ class RainData(APIView):
 
                 rainFall = round(sum(dataSet) / len(dataSet))
                 rainFallDict[guName] = {"rainFall": rainFall}
-                print(rainFallDict)
             except ZeroDivisionError:
                 return Response(
                     {

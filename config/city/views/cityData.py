@@ -20,6 +20,7 @@ class CityData(APIView):
         # serializer 적용하려면 values로 가져와라
         data = None
         try:
+            print(City.objects.filter().values)
             data = (City.objects.filter(name=name).values())[0]
         except:
             return self.responseCode(400, "orm으로 데이터 로드 실패")
