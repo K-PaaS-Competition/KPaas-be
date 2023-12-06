@@ -18,7 +18,7 @@ class SubRegionDataByCity(APIView):
             city = City.objects.filter(name=cityName)
             if city.exists():
                 subRegion = SubRegion.objects.filter(city=city.first())
-                print(subRegion.values())
+                print(subRegion)
                 return Response(
                     {
                         "data": subRegion.values(),

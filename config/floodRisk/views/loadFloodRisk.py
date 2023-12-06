@@ -27,7 +27,6 @@ class LoadFloodData(APIView):
                 message = "csv is empty"
                 return self.responseCode(400, message)
             for idx in range(len(floodData)):
-                print(idx)
                 data = floodData.loc[idx]
                 cityName = data["SD_NM"]
                 gidChar = data["GID"][:2]

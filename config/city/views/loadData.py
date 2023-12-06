@@ -14,15 +14,12 @@ class LoadData(APIView):
         table = table.loc[
             (table["읍면동/구"] == 0) & (table["읍/면/리/동"] == 0) & (table["리"] == 0)
         ]
-        print(table)
         table = table.reset_index()
-        print(table)
         cityName = table.loc[0]["시도"]
         city = City.objects.filter(name=cityName).first()
         added = 0
         for i in range(len(table)):
             data = table.loc[i]
-            print(data)
             prev = SubRegion.objects.filter(name=data["시군구"])
             if prev.exists():
                 prev.update(name=data["시군구"], lat=data["위도"], lng=data["경도"], city=city)

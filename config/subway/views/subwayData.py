@@ -8,7 +8,6 @@ class SubwayData(APIView):
     def get(self, request, *args, **kwargs):
         try:
             stationName = request.GET["station"]
-            print(stationName)
             subway = Subway.objects.filter(name=stationName).values()
         except KeyError:
             return Response(
