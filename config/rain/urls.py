@@ -4,4 +4,5 @@ from rain.views import Test
 
 urlpatterns = [
     path("get/", RainData.as_view()),
+    path("test/", RainData.as_view()),
 ]
