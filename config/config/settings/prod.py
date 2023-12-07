@@ -3,9 +3,9 @@ from .base import *
 DEBUG = False
 ALLOWED_HOSTS = [
     "49.50.164.200",
-    "https://floodingpoint.p-e.kr",
-    "https://dev--floodingpoint-seoul.netlify.app",
-    "https://floodingpoint-seoul.netlify.app",
+    "floodingpoint.p-e.kr",
+    "dev--floodingpoint-seoul.netlify.app",
+    "floodingpoint-seoul.netlify.app",
     "127.0.0.1:8000",
     "localhost",
     "127.0.0.1",
