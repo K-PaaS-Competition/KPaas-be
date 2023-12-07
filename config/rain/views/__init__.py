@@ -1,2 +1,2 @@
 from .rainData import RainData
-from .test import Test
+from .test import *

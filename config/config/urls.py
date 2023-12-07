@@ -17,11 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
+from rain.views import testPage
 
 routers = routers.DefaultRouter()
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", testPage, name="main"),
     path("floodRisk/", include("floodRisk.urls")),
     path("subway/", include("subway.urls")),
     path("city/", include("city.urls")),
